@@ -20,6 +20,10 @@ function App() {
     .then(res => res.json())
     .then (data => {
       console.log(data);
+      if (data.acknowledged===true) {
+        alert("data added successfully")
+        form.reset();
+      }
     })
   };
 
