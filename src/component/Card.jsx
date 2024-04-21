@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Card = ({setUser,singleUser,user}) => {
     
     const {name,email,_id} = singleUser;
-    console.log(name);
+    // console.log(name);
     const handleDelete = _id => {
 console.log("delete",_id);
 fetch(`http://localhost:5000/users/${_id}`,{
@@ -20,10 +20,10 @@ fetch(`http://localhost:5000/users/${_id}`,{
                 
     }
 })
-// .catch(error => {
-//     console.error('Error:', error);
-//     alert("Failed to delete user");
-// });
+.catch(error => {
+    console.error('Error:', error);
+    alert("Failed to delete user");
+});
     };
     return (
         <div>
@@ -35,6 +35,9 @@ fetch(`http://localhost:5000/users/${_id}`,{
 	</div>
 	<p className="text-gray-100">email : {email}  </p>
     <button onClick={() => handleDelete(_id)} className=" hover:bg-emerald-900 py-3 mt-2 w-full">Delete</button>
+    <Link to={`/update/${_id}`}>
+    <button className=" hover:bg-emerald-600 py-3 mt-2 w-full">Update</button>
+    </Link>
 </div>
         </div>
     );

@@ -7,7 +7,7 @@ function App() {
     const form =e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const user= {name, email}
+    const user= (name, email)
     console.log(user);
 
     fetch('http://localhost:5000/users',{
